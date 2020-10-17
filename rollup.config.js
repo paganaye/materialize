@@ -3,6 +3,9 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
+import sveltePreprocess from 'svelte-preprocess';
+import typescript from '@rollup/plugin-typescript';
+import css from 'rollup-plugin-css-only';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -20,7 +23,6 @@ function serve() {
 				stdio: ['ignore', 'inherit', 'inherit'],
 				shell: true
 			});
-
 			process.on('SIGTERM', toExit);
 			process.on('exit', toExit);
 		}
@@ -28,7 +30,7 @@ function serve() {
 }
 
 export default {
-	input: 'svelte/src/main.js',
+	input: 'svelte/src/main.ts',
 	output: {
 		sourcemap: true,
 		format: 'iife',
@@ -43,7 +45,8 @@ export default {
 			// a separate file - better for performance
 			css: css => {
 				css.write('bundle.css');
-			}
+			},
+			preprocess: sveltePreprocess(),
 		}),
 
 		// If you have external dependencies installed from
@@ -56,6 +59,10 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
+		typescript({
+			sourceMap: !production,
+			inlineSources: !production
+		}),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
@@ -67,7 +74,8 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
+		css({ output: 'svelte/public/build/extra.css'})
 	],
 	watch: {
 		clearScreen: false
