@@ -1,6 +1,6 @@
 <h1>This is fork of Materialize, not the official source</h1>
 
-<p>I am try to see if we could make svelte components rather than javascript</p>
+<p>I am trying to see if we could make svelte components rather than javascript</p>
 
 <hr/>
 Original documentation 
