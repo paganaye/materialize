@@ -1,3 +1,11 @@
+<h1>This is fork of Materialize, not the official source</h1>
+
+<p>I am try to see if we could make svelte components rather than javascript</p>
+
+<hr/>
+Original documentation 
+<hr/>
+
 <p align="center">
   <a href="https://materializecss.com/">
     <img src="https://materializecss.com/res/materialize.svg" width="150">
