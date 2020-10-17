@@ -3,37 +3,36 @@
 </script>
 
 <script lang="ts">
-  import '../../dist/css/materialize.css';
   import * as Waves from 'node-waves';
-  import { onMount } from 'svelte';
+  import 'node-waves/dist/waves.min.css';
+  import Button from './Button.svelte';
+  import Checkbox from './Checkbox.svelte';
   export let name: string;
+  let x = false;
+
+  let newStyle = document.createElement('style');
+  document.body.append(newStyle);
+
+  function changeH1() {
+    x = !x;
+    newStyle.innerText = 'h2 { color: ' + (x ? '#f23' : '#54f') + ' }';
+  }
 </script>
 
-<style lang="scss">
-   @import './vars.scss'; 
-  $primary-color: #ff0;
-
+<style>
   h1 {
-    color: $primary-color;
+    color: #0f0;
   }
 </style>
 
-/* Cannot find any of modules: sass,node-sass Error: Node Sass does not yet support your current
-environment: Windows 64-bit with Unsupported runtime (80) For more information on which environments
-are supported please see: https://github.com/sass/node-sass/releases/tag/v4.14.1 The file cannot be
-parsed because style requires a preprocessor that doesn't seem to be setup or failed during setup.
-Did you setup a `svelte.config.js`? If you use SCSS, it may be necessary to add the path to your
-NODE runtime to the setting `svelte.language-server.runtime`, or use `sass` instead of `node-sass`.
-See
-https://github.com/sveltejs/language-tools/tree/master/packages/svelte-vscode#using-with-preprocessors
-for more info. */
 <header>
   <nav class="top-nav">
     <div class="container">
       <div class="nav-wrapper">
         <div class="row">
           <div class="col s12 m10 offset-m1">
-            <h1 class="header">Svelte</h1>
+            <h1 class="header">Svelte {name}</h1>
+            <h2 class="header">Svelte2 {name}</h2>
           </div>
         </div>
       </div>
@@ -44,14 +43,20 @@ for more info. */
 <main>
   <!-- svelte-ignore a11y-missing-attribute -->
   <div class="row">
-    <a class="waves-effect waves-light btn-small">Button</a>
-    <a class="waves-effect waves-light btn-small"><i class="material-icons left">cloud</i>button</a>
-    <a class="waves-effect waves-light btn-small"><i
-        class="material-icons right">cloud</i>{name}</a>
+    <Button leftIcon="cloud">Hello</Button>
+    <Button rightIcon="cloud">Hello</Button>
+    <Button leftIcon="cloud" rightIcon="cloud">Hello</Button>
+    <Checkbox filledIn={true} checked={false}>Hello1</Checkbox>
+    <Checkbox filledIn={true} checked={true}>Hello2</Checkbox>
+    <Checkbox filledIn={true} checked={null}>Hello3</Checkbox>
+    <Checkbox checked={false}>Hello4</Checkbox>
+    <Checkbox checked={true}>Hello5</Checkbox>
+    <Checkbox checked={null}>Hello6</Checkbox>
 
-    <a class="waves-effect waves-light btn">button</a>
-    <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
-    <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+    <Checkbox>Hello7</Checkbox>
+    <Checkbox checked={false} disabled={true}>Hello8</Checkbox>
+    <Checkbox checked={true} disabled={true}>Hello9</Checkbox>
+    <Checkbox checked={undefined} disabled={true}>Hello10</Checkbox>
   </div>
 </main>
 <footer class="page-footer docs-footer">
