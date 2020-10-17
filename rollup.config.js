@@ -11,7 +11,7 @@ const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
 	let server;
-	
+
 	function toExit() {
 		if (server) server.kill(0);
 	}
@@ -46,7 +46,14 @@ export default {
 			css: css => {
 				css.write('bundle.css');
 			},
-			preprocess: sveltePreprocess(),
+			preprocess: sveltePreprocess({
+				sourceMap: !production,
+				// defaults: {
+				// 	markup: 'pug',
+				// 	script: 'typescript',
+				// 	style: 'scss'
+				// },
+			}),
 		}),
 
 		// If you have external dependencies installed from
@@ -75,7 +82,7 @@ export default {
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
 		production && terser(),
-		css({ output: 'svelte/public/build/extra.css'})
+		css({ output: 'svelte/public/build/extra.css' })
 	],
 	watch: {
 		clearScreen: false
