@@ -46,5 +46,8 @@ _SpecRunner.html
 css/ghpages-materialize.css
 bin/
 
+# ignore svelte generated files
+svelte/public/build/
+
 # Ignore lock
 yarn.lock

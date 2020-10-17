@@ -16,10 +16,13 @@
     "url": "https://github.com/materializecss/materialize/issues"
   },
   "scripts": {
-    "dev": "grunt monitor",
-    "test": "grunt travis",
-    "release": "grunt release",
-    "precommit": "lint-staged"
+    "svelte-build": "rollup -c",
+    "svelte-dev": "rollup -c -w",
+    "svelte-start": "sirv svelte/public",
+    "original-dev": "grunt monitor",
+    "original-test": "grunt travis",
+    "original-release": "grunt release",
+    "original-precommit": "lint-staged"
   },
   "lint-staged": {
     "js/*.js": [
@@ -27,7 +30,9 @@
       "git add"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "sirv-cli": "^1.0.0"
+  },
   "engine": "node >= 6",
   "devDependencies": {
     "autoprefixer": "^7.1.1",
@@ -58,7 +63,14 @@
     "node-archiver": "^0.3.0",
     "node-sass": "^4.14.1",
     "phantomjs-prebuilt": "^2.1.14",
-    "prettier": "^1.12.1"
+    "prettier": "^1.12.1",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "rollup": "^2.3.4",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.0.0"
   },
   "files": [
     "dist",
