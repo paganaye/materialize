@@ -1,6 +1,16 @@
+<script context="module">
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      Waves.init();
+    },
+    false
+  );
+</script>
+
 <script lang="ts">
-  import '../../dist/js/materialize.js';
   import '../../dist/css/materialize.css';
+  import * as Waves from 'node-waves';
   export let name: string;
 </script>
 
