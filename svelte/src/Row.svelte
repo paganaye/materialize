@@ -12,6 +12,7 @@
   padding: 0 .75rem;
   min-height: 1px;
 }
+
 </style>
 
 <div class="row">

@@ -9,6 +9,7 @@
   import Checkbox from './Checkbox.svelte';
   import Col from './Col.svelte';
   import Row from './Row.svelte';
+  import TabsDemo from './TabsDemo.svelte';
   let x = false;
 
   let newStyle = document.createElement('style');
@@ -21,10 +22,7 @@
 </script>
 
 <style>
-
 </style>
-
-
 
 <main>
   <!-- svelte-ignore a11y-missing-attribute -->
@@ -58,11 +56,21 @@
     <Checkbox checked={true} disabled={true}>Hello9</Checkbox>
     <Checkbox checked={undefined} disabled={true}>Hello10</Checkbox>
   </div>
-
+<h2>Responsive Grid System</h2>
+<p>For now I kept a cut down version of the original Materialize grid system. It is based on bootstrap 3, I believe.</p>
+<p>The size 6 columns below should be 12 wide on small screens</p>
+<pre>
+&lt;Row&gt;
+  &lt;Col size={12}&gt;...&lt;/Col&gt;
+  &lt;Col size={{s:12, m:6}}&gt;...&lt;/Col&gt;
+  &lt;Col size={{s:12, m:6}}&gt;...&lt;/Col&gt;
+&lt;/Row&gt;
+</pre>
   <Row>
     <Col size={12}>This div is 12-columns wide on all screen sizes</Col>
     <Col size={{s:12, m:6}}>6-columns (one-half)</Col>
     <Col size={{s:12, m:6}}>6-columns (one-half)</Col>
-  </Row>
-          
+  </Row>  
+  <p>Ultimately we should perhaps migrate to bootstrap 4 grid system. It is based on flexbox, is more flexible and allows variable width content.</p>
+  <TabsDemo />
 </main>
