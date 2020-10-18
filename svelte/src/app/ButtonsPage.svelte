@@ -1,21 +1,16 @@
-<script context="module">
-  Waves.init();
-</script>
-
 <script lang="ts">
-  import * as Waves from 'node-waves';
-  import 'node-waves/dist/waves.min.css';
   import Button from '../components/Button.svelte';
   let x = false;
 
   let newStyle = document.createElement('style');
   document.body.append(newStyle);
 
-  function changeH1() {
-    x = !x;
-    newStyle.innerText = 'h2 { color: ' + (x ? '#f23' : '#54f') + ' }';
+  let buttonClicked = 0;
+  function onclick(){
+    buttonClicked+=1;
   }
 </script>
+
 
 <style>
 </style>
@@ -23,16 +18,26 @@
 <main>
   <!-- svelte-ignore a11y-missing-attribute -->
   <div class="row">
-    <h2>Materialize-css buttons rewritten in svelte</h2>
-    <pre>    
-&lt;Button leftIcon="cloud"&gt;Hello&lt;/Button&gt;
-&lt;Button rightIcon="cloud"&gt;Hello&lt;/Button&gt;
-&lt;Button leftIcon="cloud" rightIcon="cloud"&gt;Hello&lt;/Button&gt;
+    <h3>Materialize-css buttons</h3>
+    <p>Here, I reproduced the button behaviour of Materialcss in svelte.</p>
+    <p>We have the nice looking materializecss and also have the super simple svelte binding.</p>
+
+    <b>Full HTML Code:</b>
+    <pre>   {`<Button leftIcon="cloud" on:click={onclick}>Save to cloud</Button>
+<Button leftIcon="add_a_photo" rightIcon="access_time" on:click={onclick}>Add Photo</Button>
+<p>{#if buttonClicked>=1} {buttonClicked} buttons clicked
+  {:else}try clicking. This is using the same wave effect than Materialize.{/if}</p>`} 
   </pre>
+  <b>Full Javascript code:</b>
+  <pre> {`<script>
+  let buttonClicked = 0;
+  function onclick(){ buttonClicked+=1; }
+</script>`}</pre>
     <div>
-    <Button leftIcon="cloud">Hello</Button>
-    <Button rightIcon="cloud">Hello</Button>
-    <Button leftIcon="cloud" rightIcon="cloud">Hello</Button>
+    <Button leftIcon="cloud" on:click={onclick}>Save to cloud</Button>
+    <Button leftIcon="add_a_photo" rightIcon="access_time" on:click={onclick}>Add Photo</Button>
+    <p>{#if buttonClicked>=1} {buttonClicked} buttons clicked
+    {:else}try clicking. This is using the same wave effect than Materialize.{/if}</p>
   </div>
   <div>
 

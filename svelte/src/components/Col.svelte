@@ -41,10 +41,11 @@ import type { ResponsiveValue, ResponsiveValueInterface } from "../types";
   left: auto;
   right: auto;
   border:1px dotted firebrick;
+  // padding: 0 .75rem; for the demo we make it big
+  padding:20px;
   float: left;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 0 .75rem;
   min-height: 1px;
 }
 .col.s1 { width: 8.3333333333%; }

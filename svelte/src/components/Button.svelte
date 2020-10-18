@@ -1,6 +1,13 @@
+<script lang="ts" context="module">
+    import 'node-waves/dist/waves.min.css';
+    import * as Waves from 'node-waves';
+    console.log("waves init...")
+  Waves.init();
+</script>
+
 <script lang="ts">
-  export let leftIcon: string=null;
-  export let rightIcon: string=null;
+    export let leftIcon: string=null;
+    export let rightIcon: string=null;
 </script>
 
 <style lang="scss">

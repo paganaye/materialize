@@ -13,6 +13,7 @@
     x = !x;
     newStyle.innerText = 'h2 { color: ' + (x ? '#f23' : '#54f') + ' }';
   }
+  //let checkBoxOneChecked;
 </script>
 
 <style>
@@ -20,21 +21,16 @@
 
 <main>
   <div>
-    <h2>Materialize-css checkboxes rewritten in svelte</h2>
-    <pre>
-&lt;Checkbox filledIn={true} checked={false}&gt;Hello1&lt;/Checkbox&gt;
-&lt;Checkbox filledIn={true} checked={true}&gt;Hello1&lt;/Checkbox&gt;
-... </pre>
-    <Checkbox filledIn={true} checked={false}>Hello1</Checkbox>
-    <Checkbox filledIn={true} checked={true}>Hello2</Checkbox>
-    <Checkbox filledIn={true} checked={null}>Hello3</Checkbox>
-    <Checkbox checked={false}>Hello4</Checkbox>
-    <Checkbox checked={true}>Hello5</Checkbox>
-    <Checkbox checked={null}>Hello6</Checkbox>
-
-    <Checkbox>Hello7</Checkbox>
-    <Checkbox checked={false} disabled={true}>Hello8</Checkbox>
-    <Checkbox checked={true} disabled={true}>Hello9</Checkbox>
-    <Checkbox checked={undefined} disabled={true}>Hello10</Checkbox>
+    <h3>Checkboxes</h3>
+    <p>Here, I reproduced the checkbox behaviour of Materialcss in svelte.</p>
+    <p>Again we have the nice looking materializecss and also have the super simple svelte binding.</p>
+    <b>Full HTML code:</b>
+    <pre>{`
+<Checkbox filledIn={true} bind:checked={checkBoxOneChecked}>checkboxOne</Checkbox>
+<p>checkBoxOneChecked = {checkBoxOneChecked}</p>
+        `}
+    </pre>
+    <Checkbox filledIn={true} bind:checked={checkBoxOneChecked}>checkboxOne</Checkbox>
+    <p>checkBoxOneChecked = {checkBoxOneChecked}</p>
   </div>
 </main>

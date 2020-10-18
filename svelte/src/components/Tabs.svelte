@@ -7,32 +7,38 @@ let selectedTabHeight=100;
 	import { slide } from 'svelte/transition';
 
   let indicatorLeft=0, indicatoWidth = 100;
+  let currentTab: HTMLLIElement;
 
   function onTabClick(e: MouseEvent, tabNo: number) {    
-    let target = (e.target as HTMLAnchorElement).parentElement as HTMLUListElement;
-    selectTab(target, tabNo);
+    currentTab =  (e.target as HTMLAnchorElement).parentElement as HTMLLIElement;
+    selectedTab = tabNo;
+    selectTab();
   }
 
   let ulElement: HTMLUListElement;
 
   onMount(()=>{
-    selectTab((ulElement as any).children[selectedTab], selectedTab);
+    selectTab();
   })
 
-  function selectTab(target: HTMLUListElement, tabNo: number) {
-    selectedTab = tabNo;
-    let elt = document.getElementById("tab-content-"+tabs[tabNo]);
+  
+  function selectTab() {
+    let elt = document.getElementById("tab-content-"+tabs[selectedTab]);
     elt.style.display='block';
     selectedTabHeight = elt.clientHeight;
-    indicatorLeft = target.offsetLeft
-    indicatoWidth = target.offsetWidth;
+    let tabButton = (ulElement as any).children[selectedTab];
+    indicatorLeft = tabButton.offsetLeft
+    indicatoWidth = tabButton.offsetWidth;
   }
+
   function onTransitionEnd(e) {
     let t = e.target;
-    let isSelected = t.classList.contains("selected")
-    if (!isSelected) t.style.display="none";    
+    if (t.classList.contains("tab-content") && !t.classList.contains("selected")) t.style.display="none";    
   }
 </script>
+
+<svelte:window on:resize={selectTab}/>
+
 
 <style lang="scss">
   ul {
@@ -76,6 +82,7 @@ let selectedTabHeight=100;
     transition: opacity 0.5s linear;
     opacity: 0.0;
     position: absolute;
+    display: none;
   }
   div.tab-content.selected {
     opacity: 1;
