@@ -39,6 +39,8 @@ let selectedTabHeight=100;
     display:flex;
     position: relative;
     padding: 0;
+    overflow-x: auto;
+    width: 100%;
   }
   li {
     text-transform: uppercase;
