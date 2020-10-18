@@ -7,7 +7,8 @@
   import 'node-waves/dist/waves.min.css';
   import Button from './Button.svelte';
   import Checkbox from './Checkbox.svelte';
-  export let name: string;
+  import Col from './Col.svelte';
+  import Row from './Row.svelte';
   let x = false;
 
   let newStyle = document.createElement('style');
@@ -20,32 +21,31 @@
 </script>
 
 <style>
-  h1 {
-    color: #0f0;
-  }
+
 </style>
 
-<header>
-  <nav class="top-nav">
-    <div class="container">
-      <div class="nav-wrapper">
-        <div class="row">
-          <div class="col s12 m10 offset-m1">
-            <h1 class="header">Svelte {name}</h1>
-            <h2 class="header">Svelte2 {name}</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+
 
 <main>
   <!-- svelte-ignore a11y-missing-attribute -->
   <div class="row">
+    <h2>Materialize-css buttons rewritten in svelte</h2>
+    <pre>    
+&lt;Button leftIcon="cloud"&gt;Hello&lt;/Button&gt;
+&lt;Button rightIcon="cloud"&gt;Hello&lt;/Button&gt;
+&lt;Button leftIcon="cloud" rightIcon="cloud"&gt;Hello&lt;/Button&gt;
+  </pre>
+    <div>
     <Button leftIcon="cloud">Hello</Button>
     <Button rightIcon="cloud">Hello</Button>
     <Button leftIcon="cloud" rightIcon="cloud">Hello</Button>
+  </div>
+  <div>
+    <h2>Materialize-css checkboxes rewritten in svelte</h2>
+    <pre>
+&lt;Checkbox filledIn={true} checked={false}&gt;Hello1&lt;/Checkbox&gt;
+&lt;Checkbox filledIn={true} checked={true}&gt;Hello1&lt;/Checkbox&gt;
+... </pre>
     <Checkbox filledIn={true} checked={false}>Hello1</Checkbox>
     <Checkbox filledIn={true} checked={true}>Hello2</Checkbox>
     <Checkbox filledIn={true} checked={null}>Hello3</Checkbox>
@@ -58,17 +58,11 @@
     <Checkbox checked={true} disabled={true}>Hello9</Checkbox>
     <Checkbox checked={undefined} disabled={true}>Hello10</Checkbox>
   </div>
+
+  <Row>
+    <Col size={12}>This div is 12-columns wide on all screen sizes</Col>
+    <Col size={{s:12, m:6}}>6-columns (one-half)</Col>
+    <Col size={{s:12, m:6}}>6-columns (one-half)</Col>
+  </Row>
+          
 </main>
-<footer class="page-footer docs-footer">
-  <div class="container">
-    <div class="row" style="margin-bottom: 0;">
-      <div class="col s12 m10 offset-m1">
-        <div class="row">
-          <div class="col l4 s12">
-            <h1>Help Materialize Grow11</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
