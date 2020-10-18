@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { ResponsiveValue, ResponsiveValueInterface } from "./types";
+import type { ResponsiveValue, ResponsiveValueInterface } from "../types";
 
   export let size: ResponsiveValue = 12;
   export let offset: ResponsiveValue = undefined;
